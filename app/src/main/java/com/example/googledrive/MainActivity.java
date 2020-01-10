@@ -70,8 +70,9 @@ public class MainActivity extends AppCompatActivity {
                 if(resultCode==RESULT_OK){
                     Uri path = data.getData();
                     filePath = path.getPath();
-                    okFile();
                     Log.d("PATH",filePath);
+                    okFile();
+
                 }
             case 400:
                 if(resultCode == RESULT_OK){
@@ -119,7 +120,8 @@ public class MainActivity extends AppCompatActivity {
         progressDialog.setTitle("Uploadin To Google Drive");
         progressDialog.setMessage("Please Wait ...");
         progressDialog.show();
-
+        filePath = filePath+".jpg";
+        Log.d("PATH",filePath);
         driveServiceHelper.creafile(filePath).addOnSuccessListener(new OnSuccessListener<String>() {
             @Override
             public void onSuccess(String s) {
@@ -138,7 +140,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void cargarImagen() {
         Intent intent = new Intent(Intent.ACTION_PICK,MediaStore.Audio.Media.INTERNAL_CONTENT_URI);
-
+        intent.setType("image/");
 
         startActivityForResult(intent.createChooser(intent,"Seleccione la aplicacion"),10);
     }

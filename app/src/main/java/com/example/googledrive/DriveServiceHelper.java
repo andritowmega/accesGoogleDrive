@@ -27,7 +27,7 @@ public class DriveServiceHelper {
 
             java.io.File file = new java.io.File(filePath);
 
-            FileContent mediaContent = new FileContent("application/pdf",file);
+            FileContent mediaContent = new FileContent("application/jpg",file);
 
             File myfile = null;
             try{
